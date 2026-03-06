@@ -1,12 +1,10 @@
-import { product } from '@/src/services/product.service';
+import { Product } from '@/src/types/product';
 
-export async function ProductList() { //Componentes comienzan con mayuscula
-    const list = await product();     //Espero la respuesta del service
-
+export function ProductList({ products }: { products: Product[] } ) { //Componentes comienzan con mayuscula
+    
     return (
-        <div className='list'>
             <ul>
-                {list.map((product) => 
+                {products.map((product) => 
                 <li key={product.id}>
                     <img src={product.img}/>
                     <h2>{product.name}</h2>
@@ -14,8 +12,6 @@ export async function ProductList() { //Componentes comienzan con mayuscula
                     <button>Ver más</button>
                 </li>)}
             </ul>
-
-        </div>
 
     )
 

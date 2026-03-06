@@ -1,14 +1,20 @@
-import ProductsList from "../components/products/page";
+import { products } from '@/src/services/product.service';
+import { ProductList } from '@/src/app/productList/productList.component'
+import NavBar from "../components/navBar.component";
 
-export default function Main(){
+export default async function Home(){
+    const allProducts = await products();
+    let allDestacados = allProducts.filter(product => product.esDestacado);
 
     return (
+      <div>
+        <header>
+            <NavBar />
+        </header>
         <div>
-            <body>
-               <h1>Lista de productos</h1>
-               <ProductsList />
-            </body>
+            <ProductList products={allDestacados} />
         </div>
+      </div>
     )
 
 }
