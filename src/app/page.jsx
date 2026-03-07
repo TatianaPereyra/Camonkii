@@ -1,9 +1,9 @@
-import { products } from '@/src/services/product.service';
-import { ProductList } from '@/src/app/productList/productList.component'
+import { getProducts } from '@/src/services/products.service';
+import { ProductList } from '@/src/components/productList.component'
 import NavBar from "../components/navBar.component";
 
 export default async function Home(){
-    const allProducts = await products();
+    const allProducts = await getProducts();
     let allDestacados = allProducts.filter(product => product.esDestacado);
 
     return (
